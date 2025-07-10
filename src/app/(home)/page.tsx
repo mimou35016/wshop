@@ -1,6 +1,7 @@
 import { HomeCard } from '@/components/shared/home/home-card'
 import HomeCarousel from '@/components/shared/home/home-carousel'
 import ProductSlider from '@/components/shared/product/product-slider'
+import BrowsingHistoryList from '@/components/shared/widget/browsing-history-list'
 import { Card, CardContent } from '@/components/ui/card'
 import {
   getAllCategories,
@@ -65,25 +66,30 @@ export default async function Home() {
   const todaysDeals = await getProductsByTag({ tag: 'todays-deal' })
   const bestSellingProducts = await getProductsByTag({ tag: 'best-seller' })
   return (
-    <div className=''>
-      <HomeCarousel items={data.carousels} />
-      <div className=' md:p-4 md:space-y-4 bg-border'>
-        <HomeCard cards={cards} />
-        <Card className='w-full rounded-none'>
-          <CardContent className='p-4 items-center gap-3'>
-            <ProductSlider title="Today's Deal" products={todaysDeals} />
-          </CardContent>
-        </Card>
+    <>
+      <div className=''>
+        <HomeCarousel items={data.carousels} />
+        <div className=' md:p-4 md:space-y-4 bg-border'>
+          <HomeCard cards={cards} />
+          <Card className='w-full rounded-none'>
+            <CardContent className='p-4 items-center gap-3'>
+              <ProductSlider title="Today's Deal" products={todaysDeals} />
+            </CardContent>
+          </Card>
 
-        <Card className='w-full rounded-none'>
-          <CardContent className='p-4 items-center gap-3'>
-            <ProductSlider
-              title='Best Selling Products'
-              products={bestSellingProducts}
-            />
-          </CardContent>
-        </Card>
+          <Card className='w-full rounded-none'>
+            <CardContent className='p-4 items-center gap-3'>
+              <ProductSlider
+                title='Best Selling Products'
+                products={bestSellingProducts}
+              />
+            </CardContent>
+          </Card>
+        </div>
       </div>
-    </div>
+      <div className=' p-4 bg-background'>
+        <BrowsingHistoryList />
+      </div>
+    </>
   )
 }
