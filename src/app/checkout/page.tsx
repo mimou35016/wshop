@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
-import CheckoutForm from './checkout-form.tsx'
+import CheckoutForm from './checkout-form'
 
 export const metadata: Metadata = {
   title: 'Checkout',
